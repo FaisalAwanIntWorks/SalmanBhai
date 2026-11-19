@@ -9,4 +9,5 @@ Static single-page website (HTML/CSS/JS, no build step).
 
 ## Before going live
 - `WHATSAPP` number is set in the `<script>` section (currently 0330 2360424)
+- Contact form emails submissions via Web3Forms (`WEB3FORMS_KEY` in the `<script>` section)
 - Replace sample reviews and stats with real ones

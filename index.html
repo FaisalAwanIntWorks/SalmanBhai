@@ -250,6 +250,8 @@ footer .logo-img{height:64px;background:#fff;border-radius:14px;padding:6px 10px
 .chips input{display:none}
 .chips span{display:inline-block;padding:10px 16px;border-radius:99px;border:1.5px solid var(--line);font-weight:600;font-size:.88rem;transition:.2s}
 .chips input:checked + span{background:var(--teal);border-color:var(--teal);color:#fff}
+.hp{display:none!important}
+.form-error{display:none;color:var(--coral-d);font-size:.9rem;font-weight:600;margin-top:12px}
 .factions{display:flex;justify-content:space-between;gap:12px;margin-top:10px}
 .success{display:none;text-align:center;padding:30px 0}
 .success .tick{width:84px;height:84px;border-radius:50%;background:var(--teal-l);color:var(--teal);display:grid;place-items:center;margin:0 auto 20px}
@@ -646,7 +648,8 @@ footer ul a:hover{color:var(--sun)}
     </div>
 
     <div class="form-card reveal">
-      <form id="leadForm" novalidate>
+      <form id="leadForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <h3>Get a Free Consultation</h3>
         <p>Takes less than a minute.</p>
         <div class="progress"><i class="on"></i><i></i><i></i></div>
@@ -688,6 +691,7 @@ footer ul a:hover{color:var(--sun)}
           <button type="button" class="btn btn-ghost" id="back" style="visibility:hidden"><svg class="ico"><use href="#i-left"/></svg> Back</button>
           <button type="button" class="btn btn-primary" id="fwd">Next Step <svg class="ico"><use href="#i-arrow"/></svg></button>
         </div>
+        <p class="form-error" id="formError" role="alert">Sorry, your request could not be sent. Please try again, or call / WhatsApp us on 0330 2360424.</p>
       </form>
       <div class="success" id="success">
         <div class="tick"><svg class="ico" style="width:40px;height:40px"><use href="#i-check"/></svg></div>
@@ -768,6 +772,9 @@ footer ul a:hover{color:var(--sun)}
 // ---- CONFIG: change your WhatsApp number here ----
 const WHATSAPP = "923302360424";
 
+// ---- CONFIG: Web3Forms access key (form submissions are emailed to the address registered on web3forms.com) ----
+const WEB3FORMS_KEY = "fd46eec1-40f1-4f7b-8d4f-4ced06647373";
+
 // ---- CONFIG: paste your Facebook & Instagram page links here ----
 const SOCIAL = {
   facebook: "https://www.facebook.com/share/1DeQSna13p/",
@@ -841,15 +848,52 @@ function valid(i) {
   return ok;
 }
 back.onclick = () => show(--cur);
-fwd.onclick = () => {
+fwd.onclick = async () => {
   if (!valid(cur)) return;
   if (cur < steps.length - 1) return show(++cur);
   const d = new FormData(form);
-  const msg = `New consultation request:%0AName: ${d.get('name')}%0APhone: ${d.get('phone')}%0AChild age: ${d.get('age')}%0AStatus: ${d.get('diag')}%0AServices: ${d.getAll('svc').join(', ') || '-'}%0APreferred time: ${d.get('time')}%0ANotes: ${d.get('msg') || '-'}`;
+  if (d.get('botcheck')) return;
+  const services = d.getAll('svc').join(', ') || '-';
+  const msg = `New consultation request:%0AName: ${d.get('name')}%0APhone: ${d.get('phone')}%0AChild age: ${d.get('age')}%0AStatus: ${d.get('diag')}%0AServices: ${services}%0APreferred time: ${d.get('time')}%0ANotes: ${d.get('msg') || '-'}`;
   document.getElementById('waSend').href = `https://wa.me/${WHATSAPP}?text=${msg.replace(/ /g, '%20')}`;
-  // TODO: connect to a backend / Formspree / Google Sheet to actually store submissions
-  form.style.display = 'none';
-  document.getElementById('success').style.display = 'block';
+
+  // Send to email via Web3Forms
+  const payload = {
+    access_key: WEB3FORMS_KEY,
+    subject: `New Consultation Request – ${d.get('name')}`,
+    from_name: 'Voice Care Website',
+    'Parent name': d.get('name'),
+    'Phone / WhatsApp': d.get('phone'),
+    'Email': d.get('email') || '-',
+    'Child age': d.get('age'),
+    'Diagnosis status': d.get('diag'),
+    'Services interested in': services,
+    'Preferred contact time': d.get('time'),
+    'Message': d.get('msg') || '-'
+  };
+  if (d.get('email')) payload.replyto = d.get('email');
+
+  const errBox = document.getElementById('formError');
+  errBox.style.display = 'none';
+  const label = fwd.innerHTML;
+  fwd.disabled = back.disabled = true;
+  fwd.textContent = 'Sending…';
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const out = await res.json();
+    if (!res.ok || !out.success) throw new Error(out.message || 'Send failed');
+    form.style.display = 'none';
+    document.getElementById('success').style.display = 'block';
+  } catch (e) {
+    errBox.style.display = 'block';
+    fwd.innerHTML = label;
+  } finally {
+    fwd.disabled = back.disabled = false;
+  }
 };
 form.querySelectorAll('input,select').forEach(f => f.addEventListener('input', () => f.closest('.field')?.classList.remove('invalid')));
 </script>
