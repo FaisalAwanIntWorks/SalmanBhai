@@ -8,6 +8,5 @@ Static single-page website (HTML/CSS/JS, no build step).
 3. Click **Deploy**
 
 ## Before going live
-- Replace placeholder phone, email (info@brightsteps.pk) and address in `index.html`
-- Update `WHATSAPP` number in the `<script>` section
+- `WHATSAPP` number is set in the `<script>` section (currently 0330 2360424)
 - Replace sample reviews and stats with real ones
