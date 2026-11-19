@@ -51,6 +51,9 @@ section{padding:90px 0}
 .topbar .wrap{display:flex;justify-content:space-between;gap:16px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap}
 .topbar span{display:inline-flex;align-items:center;gap:6px;margin-right:18px}
 .topbar svg{width:15px;height:15px}
+.topbar .tsocial{display:inline-flex;gap:12px;margin-left:6px;padding-left:14px;border-left:1px solid rgba(255,255,255,.2)}
+.topbar .tsocial a{display:inline-flex;opacity:.9;transition:.2s}
+.topbar .tsocial a:hover{opacity:1;color:var(--sun)}
 
 /* Header */
 header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
@@ -216,6 +219,13 @@ footer .logo-img{height:64px;background:#fff;border-radius:14px;padding:6px 10px
 .ci .ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;flex:none}
 .ci small{color:var(--muted);font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
 .ci b{display:block}
+.follow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px}
+.follow b{margin-right:6px}
+.follow a{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:99px;font-weight:700;font-size:.9rem;color:#fff;transition:.2s}
+.follow a:hover{transform:translateY(-2px)}
+.follow .ico{width:18px;height:18px}
+.follow .fb{background:#1877f2}
+.follow .ig{background:linear-gradient(45deg,#f58529,#dd2a7b 50%,#8134af)}
 .hours{margin-top:16px;background:var(--teal-l);border-radius:18px;padding:18px 20px;font-size:.92rem}
 .hours div{display:flex;justify-content:space-between;padding:4px 0}
 .form-card{background:#fff;border-radius:28px;padding:40px;box-shadow:var(--shadow);border:1px solid var(--line)}
@@ -369,7 +379,7 @@ footer ul a:hover{color:var(--sun)}
       <span><svg><use href="#i-phone"/></svg> 0330 2360424</span>
       <span class="hide-sm"><svg><use href="#i-mail"/></svg> voicecare50@gmail.com</span>
     </div>
-    <div><span><svg><use href="#i-clock"/></svg> Timings: 9:00 AM – 3:00 PM</span></div>
+    <div style="display:flex;align-items:center"><span><svg><use href="#i-clock"/></svg> Timings: 9:00 AM – 3:00 PM</span><span class="tsocial"><a href="#" data-social="facebook" aria-label="Facebook" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg></a><a href="#" data-social="instagram" aria-label="Instagram" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg></a></span></div>
   </div>
 </div>
 
@@ -622,6 +632,11 @@ footer ul a:hover{color:var(--sun)}
         <a class="ci" href="mailto:voicecare50@gmail.com"><span class="ic c-coral"><svg class="ico"><use href="#i-mail"/></svg></span><span><small>Email Us</small><b>voicecare50@gmail.com</b></span></a>
         <a class="ci" href="https://maps.google.com/?q=Noor-e-Falak+Plaza+Fateh+Sher+Road+Sahiwal" target="_blank" rel="noopener"><span class="ic c-sun"><svg class="ico"><use href="#i-pin"/></svg></span><span><small>Visit Us</small><b>Noor-e-Falak Plaza, First Floor, Unit No. 2, Main Fateh Sher Road, Opposite Deplex Salon, Sahiwal</b></span></a>
       </div>
+      <div class="follow">
+        <b>Follow us</b>
+        <a href="#" data-social="facebook" target="_blank" rel="noopener" class="fb"><svg class="ico"><use href="#i-fb"/></svg> Facebook</a>
+        <a href="#" data-social="instagram" target="_blank" rel="noopener" class="ig"><svg class="ico"><use href="#i-ig"/></svg> Instagram</a>
+      </div>
       <div class="hours">
         <div><b>Clinic Timings</b><span>9:00 AM – 3:00 PM</span></div>
       </div>
@@ -724,8 +739,8 @@ footer ul a:hover{color:var(--sun)}
         <a href="#" class="logo"><img class="logo-img" src="images/logo.jpeg" alt="Voice Care — Autism &amp; Speech Development Center" width="708" height="292" loading="lazy"></a>
         <p style="font-size:.94rem;max-width:300px">Every child deserves a voice. Helping children with autism, speech and developmental needs grow in confidence, communication and independence.</p>
         <div class="social">
-          <a href="#" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
+          <a href="#" data-social="facebook" aria-label="Facebook" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg></a>
+          <a href="#" data-social="instagram" aria-label="Instagram" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg></a>
           <a href="#" aria-label="YouTube"><svg><use href="#i-yt"/></svg></a>
           <a href="https://wa.me/923302360424" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
         </div>
@@ -749,6 +764,17 @@ footer ul a:hover{color:var(--sun)}
 <script>
 // ---- CONFIG: change your WhatsApp number here ----
 const WHATSAPP = "923302360424";
+
+// ---- CONFIG: paste your Facebook & Instagram page links here ----
+const SOCIAL = {
+  facebook: "",   // e.g. "https://www.facebook.com/yourpage"
+  instagram: ""   // e.g. "https://www.instagram.com/yourpage"
+};
+document.querySelectorAll('[data-social]').forEach(a => {
+  const url = SOCIAL[a.dataset.social];
+  if (url) a.href = url;
+  else a.addEventListener('click', e => e.preventDefault());
+});
 
 document.getElementById('yr').textContent = new Date().getFullYear();
 
