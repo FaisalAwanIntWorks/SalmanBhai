@@ -3,8 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Autism Treatment Center in Lahore | BrightSteps Child Development</title>
+<title>Autism Treatment Center in Lahore | Voice Care Autism &amp; Speech Development Center</title>
 <meta name="description" content="Evidence-based autism therapy in Lahore — ABA, speech, occupational & sensory integration therapy, special education and parent training under one roof. Book a free assessment.">
+<link rel="icon" type="image/jpeg" href="images/favicon.jpeg">
+<link rel="apple-touch-icon" href="images/favicon.jpeg">
+<meta property="og:title" content="Voice Care — Autism &amp; Speech Development Center">
+<meta property="og:description" content="Every child deserves a voice. Autism, speech and developmental therapy in Lahore.">
+<meta property="og:image" content="images/image4.jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -53,6 +58,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdro
 .logo{display:flex;align-items:center;gap:10px;font-family:"Fraunces",serif;font-weight:700;font-size:1.35rem;color:var(--teal-d)}
 .logo small{display:block;font-family:"Plus Jakarta Sans";font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
 .logo-mark{width:42px;height:42px}
+.logo-img{height:58px;width:auto}
+footer .logo-img{height:64px;background:#fff;border-radius:14px;padding:6px 10px}
 .menu{display:flex;gap:4px;list-style:none;align-items:center}
 .menu a{padding:10px 14px;border-radius:12px;font-weight:600;font-size:.95rem;color:#34474f}
 .menu a:hover{background:var(--cream);color:var(--teal)}
@@ -76,11 +83,11 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdro
 .hero-art{position:relative;aspect-ratio:1/1;max-width:520px;margin-left:auto;width:100%}
 .blob{position:absolute;inset:6%;background:linear-gradient(140deg,var(--teal) 0%,#14b8a6 100%);border-radius:42% 58% 55% 45%/48% 42% 58% 52%;animation:morph 12s ease-in-out infinite}
 @keyframes morph{50%{border-radius:58% 42% 40% 60%/55% 60% 40% 45%}}
-.hero-art .scene{position:absolute;inset:14%}
+.hero-art .scene{position:absolute;inset:12%;width:76%;height:76%;object-fit:cover;border-radius:28px;border:8px solid #fff;box-shadow:var(--shadow)}
 .float-card{position:absolute;background:#fff;border-radius:18px;padding:14px 18px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;font-size:.88rem;font-weight:600;animation:bob 5s ease-in-out infinite}
 .float-card .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:#fff}
 .float-card small{display:block;color:var(--muted);font-weight:500;font-size:.75rem}
-.fc1{top:4%;left:-4%}.fc2{bottom:10%;left:-8%;animation-delay:-2s}.fc3{top:40%;right:-6%;animation-delay:-3.5s}
+.fc1{top:-2%;left:-4%}.fc2{bottom:-3%;right:-4%;animation-delay:-2s}.fc3{display:none}
 @keyframes bob{50%{transform:translateY(-10px)}}
 
 /* Marquee strip */
@@ -94,9 +101,14 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdro
 .split{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
 .photo-stack{position:relative;aspect-ratio:5/5.4}
 .ph{position:absolute;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
-.ph1{inset:0 22% 18% 0;background:linear-gradient(160deg,#fde68a,#fdba74)}
-.ph2{inset:40% 0 0 34%;background:linear-gradient(160deg,#a5f3fc,#5eead4);border:8px solid #fff}
-.ph svg{width:100%;height:100%}
+.ph1{inset:0 22% 18% 0}
+.ph2{inset:50% 0 4% 30%;border:8px solid #fff}
+.ph svg,.ph img{width:100%;height:100%;object-fit:cover}
+.ph2 img{object-fit:contain;background:#fff}
+.ph1{background:#fff}
+/* Banner */
+.banner{padding:0 0 90px}
+.banner img{width:100%;height:auto;border-radius:28px;box-shadow:var(--shadow);border:1px solid var(--line)}
 .badge-years{position:absolute;left:-14px;bottom:8%;background:var(--coral);color:#fff;border-radius:20px;padding:18px 22px;box-shadow:var(--shadow);text-align:center;z-index:2}
 .badge-years b{font-family:"Fraunces";font-size:2.4rem;display:block;line-height:1}
 .badge-years small{font-size:.8rem;font-weight:600;opacity:.95}
@@ -286,10 +298,12 @@ footer ul a:hover{color:var(--sun)}
 }
 @media (max-width:600px){
   body{font-size:15.5px}
+  .logo-img{height:46px}
+  .banner{padding-bottom:70px}
   .grid3,.grid4,.ages,.steps,.row,.checks,.fgrid{grid-template-columns:1fr}
   .slider{grid-auto-columns:88%}
   .form-card{padding:28px 20px}
-  .fc1{left:0}.fc2{left:0}.fc3{right:0}
+  .fc1{left:0}.fc2{right:0}
   .float-card{font-size:.78rem;padding:10px 12px}
   .float-card .ic{width:32px;height:32px}
   .mbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:70;box-shadow:0 -6px 20px rgba(0,0,0,.08)}
@@ -348,9 +362,8 @@ footer ul a:hover{color:var(--sun)}
 <!-- ====== HEADER ====== -->
 <header>
   <div class="wrap nav">
-    <a href="#" class="logo" aria-label="BrightSteps home">
-      <svg class="logo-mark" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#0f766e"/><path d="M14 30c4-9 8-13 10-13s6 4 10 13" stroke="#fbbf24" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="24" cy="13" r="4" fill="#f97362"/></svg>
-      <span>BrightSteps<small>Autism &amp; Child Development</small></span>
+    <a href="#" class="logo" aria-label="Voice Care home">
+      <img class="logo-img" src="images/logo.jpeg" alt="Voice Care — Autism &amp; Speech Development Center" width="708" height="292">
     </a>
     <ul class="menu" id="menu">
       <li><a href="#about">About</a></li>
@@ -385,30 +398,12 @@ footer ul a:hover{color:var(--sun)}
       </div>
     </div>
 
-    <div class="hero-art" aria-hidden="true">
+    <div class="hero-art">
       <div class="blob"></div>
-      <svg class="scene" viewBox="0 0 300 300">
-        <!-- playful building blocks + child figure illustration -->
-        <rect x="40" y="200" width="60" height="60" rx="10" fill="#fbbf24"/>
-        <text x="70" y="241" font-family="Fraunces" font-size="34" font-weight="700" fill="#fff" text-anchor="middle">A</text>
-        <rect x="104" y="200" width="60" height="60" rx="10" fill="#f97362"/>
-        <text x="134" y="241" font-family="Fraunces" font-size="34" font-weight="700" fill="#fff" text-anchor="middle">B</text>
-        <rect x="72" y="136" width="60" height="60" rx="10" fill="#a78bfa"/>
-        <text x="102" y="177" font-family="Fraunces" font-size="34" font-weight="700" fill="#fff" text-anchor="middle">C</text>
-        <circle cx="215" cy="110" r="26" fill="#fde2c8"/>
-        <path d="M190 104c2-20 46-22 50 0-8-8-38-10-50 0z" fill="#3b2a20"/>
-        <circle cx="206" cy="112" r="3" fill="#15232b"/><circle cx="224" cy="112" r="3" fill="#15232b"/>
-        <path d="M207 122q8 7 16 0" stroke="#15232b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <path d="M180 260v-70c0-22 70-22 70 0v70z" fill="#fff"/>
-        <path d="M184 196l-24 26" stroke="#fde2c8" stroke-width="12" stroke-linecap="round"/>
-        <path d="M246 196l18 -30" stroke="#fde2c8" stroke-width="12" stroke-linecap="round"/>
-        <circle cx="268" cy="158" r="12" fill="#fbbf24"/>
-        <path d="M30 70l8 16 16 2-12 11 3 17-15-8-15 8 3-17-12-11 16-2z" fill="#fff" opacity=".85"/>
-        <circle cx="150" cy="60" r="8" fill="#7dd3fc"/><circle cx="268" cy="40" r="6" fill="#fff" opacity=".7"/>
-      </svg>
-      <div class="float-card fc1"><span class="ic" style="background:var(--coral)"><svg class="ico"><use href="#i-chat"/></svg></span><span>First words at 3!<small>Speech therapy win</small></span></div>
-      <div class="float-card fc2"><span class="ic" style="background:var(--teal)"><svg class="ico"><use href="#i-chart"/></svg></span><span>Monthly progress<small>Shared with parents</small></span></div>
-      <div class="float-card fc3"><span class="ic" style="background:var(--lav)"><svg class="ico"><use href="#i-sense"/></svg></span><span>Sensory gym<small>Calm &amp; safe</small></span></div>
+      <img class="scene" src="images/image1.jpeg" alt="Child doing a blowing exercise (oral motor activity) at Voice Care" width="1254" height="1254">
+      <div class="float-card fc1" aria-hidden="true"><span class="ic" style="background:var(--coral)"><svg class="ico"><use href="#i-chat"/></svg></span><span>First words at 3!<small>Speech therapy win</small></span></div>
+      <div class="float-card fc2" aria-hidden="true"><span class="ic" style="background:var(--teal)"><svg class="ico"><use href="#i-chart"/></svg></span><span>Monthly progress<small>Shared with parents</small></span></div>
+      <div class="float-card fc3" aria-hidden="true"><span class="ic" style="background:var(--lav)"><svg class="ico"><use href="#i-sense"/></svg></span><span>Sensory gym<small>Calm &amp; safe</small></span></div>
     </div>
   </div>
 </section>
@@ -423,17 +418,17 @@ footer ul a:hover{color:var(--sun)}
   <div class="wrap split">
     <div class="photo-stack reveal">
       <div class="ph ph1">
-        <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice"><circle cx="300" cy="90" r="60" fill="#fff" opacity=".35"/><rect x="60" y="250" width="280" height="20" rx="10" fill="#fff" opacity=".5"/><circle cx="150" cy="190" r="40" fill="#f97362"/><circle cx="250" cy="200" r="30" fill="#0f766e"/><rect x="180" y="120" width="50" height="50" rx="8" fill="#a78bfa" transform="rotate(15 205 145)"/></svg>
+        <img src="images/image2.jpeg" alt="Child doing a cone sorting activity during play-based therapy" width="843" height="1264" loading="lazy">
       </div>
       <div class="ph ph2">
-        <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><path d="M0 220 Q75 170 150 220 T300 220 V300 H0z" fill="#fff" opacity=".5"/><circle cx="150" cy="130" r="50" fill="#fbbf24"/><circle cx="80" cy="70" r="16" fill="#fff" opacity=".7"/></svg>
+        <img src="images/image5.jpeg" alt="Voice Care logo — Every Child Deserves a Voice" width="1536" height="1024" loading="lazy">
       </div>
       <div class="badge-years"><b>5+</b><small>Years caring for<br>Lahore families</small></div>
     </div>
     <div class="reveal">
       <span class="eyebrow">About Our Center</span>
       <h2>A calm, structured place where children feel safe to learn</h2>
-      <p class="lead" style="margin-top:16px">BrightSteps is a dedicated autism and child development center in Lahore. Our multidisciplinary team builds one joined-up plan for each child — so speech, behaviour, motor skills and learning all move forward together.</p>
+      <p class="lead" style="margin-top:16px">Voice Care is a dedicated autism and speech development center in Lahore. Our multidisciplinary team builds one joined-up plan for each child — so speech, behaviour, motor skills and learning all move forward together.</p>
       <ul class="checks">
         <li>Behaviour Therapy (ABA)</li>
         <li>Speech &amp; Language Therapy</li>
@@ -489,6 +484,13 @@ footer ul a:hover{color:var(--sun)}
     </div>
   </div>
 </section>
+
+<!-- ====== BANNER ====== -->
+<div class="banner">
+  <div class="wrap reveal">
+    <img src="images/image4.jpeg" alt="Voice Care — Every child deserves a voice. Support for autism, ADHD, speech and hearing." width="1376" height="768" loading="lazy">
+  </div>
+</div>
 
 <!-- ====== PROCESS ====== -->
 <section id="process" class="process">
@@ -681,8 +683,8 @@ footer ul a:hover{color:var(--sun)}
   <div class="wrap">
     <div class="fgrid">
       <div>
-        <a href="#" class="logo"><svg class="logo-mark" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#14b8a6"/><path d="M14 30c4-9 8-13 10-13s6 4 10 13" stroke="#fbbf24" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="24" cy="13" r="4" fill="#f97362"/></svg><span>BrightSteps<small>Autism &amp; Child Development</small></span></a>
-        <p style="font-size:.94rem;max-width:300px">Helping children with autism and developmental needs grow in confidence, communication and independence.</p>
+        <a href="#" class="logo"><img class="logo-img" src="images/logo.jpeg" alt="Voice Care — Autism &amp; Speech Development Center" width="708" height="292" loading="lazy"></a>
+        <p style="font-size:.94rem;max-width:300px">Every child deserves a voice. Helping children with autism, speech and developmental needs grow in confidence, communication and independence.</p>
         <div class="social">
           <a href="#" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a>
           <a href="#" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
@@ -698,7 +700,7 @@ footer ul a:hover{color:var(--sun)}
         <li style="display:flex;gap:10px"><svg class="ico" style="width:18px"><use href="#i-pin"/></svg>Your Street Address, Lahore</li>
       </ul></div>
     </div>
-    <div class="fbottom"><span>© <span id="yr">2026</span> BrightSteps Child Development Center. All rights reserved.</span><span>Privacy Policy · Terms</span></div>
+    <div class="fbottom"><span>© <span id="yr">2026</span> Voice Care Autism &amp; Speech Development Center. All rights reserved.</span><span>Privacy Policy · Terms</span></div>
   </div>
 </footer>
 

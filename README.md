@@ -8,6 +8,6 @@ Static single-page website (HTML/CSS/JS, no build step).
 3. Click **Deploy**
 
 ## Before going live
-- Replace placeholder name (BrightSteps), phone, email and address in `index.html`
+- Replace placeholder phone, email (info@brightsteps.pk) and address in `index.html`
 - Update `WHATSAPP` number in the `<script>` section
 - Replace sample reviews and stats with real ones
